@@ -26,8 +26,6 @@ export interface UpdateUniversityPayload {
    slug?: string;
 }
 
-const headers = getAuthHeaders();
-
 const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080';
 export const UNIVERSITY_API_URL = `${BASE_URL}/api/universities`;
 
@@ -48,6 +46,7 @@ export const universityApi = {
    async create(
       payload: CreateUniversityPayload
    ): Promise<University> {
+      const headers = getAuthHeaders();
       const response = await axios.post<University>(UNIVERSITY_API_URL, payload, headers);
       return response.data;
    },
@@ -56,11 +55,13 @@ export const universityApi = {
       id: string,
       payload: UpdateUniversityPayload
    ): Promise<University> {
+      const headers = getAuthHeaders();
       const response = await axios.put<University>(`${UNIVERSITY_API_URL}/${id}`, payload, headers);
       return response.data;
    },
 
    async delete(id: string): Promise<{ message: string }> {
+      const headers = getAuthHeaders();
       const response = await axios.delete<{ message: string }>(`${UNIVERSITY_API_URL}/${id}`, headers);
       return response.data;
    },

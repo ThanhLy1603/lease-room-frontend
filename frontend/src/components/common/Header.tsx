@@ -63,7 +63,9 @@ export function Header(): React.ReactElement {
                      placeholder="Tìm theo khu vực, trường ĐH (vd: UEH, Nguyễn Thị Thập)..."
                      className="w-full bg-transparent text-sm text-slate-800 outline-none placeholder:text-slate-400"
                   />
-                  <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-4 py-1.5 rounded-full transition-colors ml-2 shrink-0">
+                  <button 
+                     type="submit" 
+                     className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-4 py-1.5 rounded-full transition-colors ml-2 shrink-0">
                      Tìm kiếm
                   </button>
                </form>

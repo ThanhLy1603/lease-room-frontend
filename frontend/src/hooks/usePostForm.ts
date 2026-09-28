@@ -150,21 +150,33 @@ export function usePostForm(editPostId?: string) {
       >,
    ) {
       const { name, value } = e.target;
-      if (errors[name]) setErrors((prev) => ({ ...prev, [name]: "" }));
+
+      // Danh sách các trường cần convert sang kiểu Number
+      const numericFields = [
+         "price",
+         "area",
+         "deposit",
+         "provinceId",
+         "districtId",
+         "wardId",
+      ];
+
+      // Nếu là trường số và người dùng nhập số âm (< 0) -> Bỏ qua không cập nhật
+      if (numericFields.includes(name) && Number(value) < 0) {
+         return;
+      }
+
+      // Xóa báo lỗi khi người dùng gõ
+      if (errors[name]) {
+         setErrors((prev) => ({ ...prev, [name]: "" }));
+      }
 
       setFormData((prev) => ({
          ...prev,
-         [name]: [
-            "price",
-            "area",
-            "deposit",
-            "provinceId",
-            "districtId",
-            "wardId",
-         ].includes(name)
-            ? value
-               ? Number(value)
-               : ""
+         [name]: numericFields.includes(name)
+            ? value === ""
+               ? ""
+               : Number(value)
             : value,
       }));
    }

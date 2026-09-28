@@ -27,22 +27,22 @@ export function Footer(): React.ReactElement {
                   <h3 className="text-slate-900 font-semibold text-sm">Cho Thuê</h3>
                   <ul className="space-y-2 text-xs sm:text-sm">
                      <li>
-                        <Link to="/cho-thue-phong-tro" className="hover:text-blue-600 transition-colors">
+                        <Link to="#" className="hover:text-blue-600 transition-colors">
                            Cho thuê phòng trọ
                         </Link>
                      </li>
                      <li>
-                        <Link to="/cho-thue-can-ho" className="hover:text-blue-600 transition-colors">
+                        <Link to="/#" className="hover:text-blue-600 transition-colors">
                            Cho thuê căn hộ
                         </Link>
                      </li>
                      <li>
-                        <Link to="/cho-thue-nha-nguyen-can" className="hover:text-blue-600 transition-colors">
+                        <Link to="#" className="hover:text-blue-600 transition-colors">
                            Nhà nguyên căn
                         </Link>
                      </li>
                      <li>
-                        <Link to="/tim-nguoi-o-ghep" className="hover:text-blue-600 transition-colors">
+                        <Link to="#" className="hover:text-blue-600 transition-colors">
                            Tìm người ở ghép
                         </Link>
                      </li>
@@ -54,22 +54,22 @@ export function Footer(): React.ReactElement {
                   <h3 className="text-slate-900 font-semibold text-sm">Hỗ Trợ Khách Hàng</h3>
                   <ul className="space-y-2 text-xs sm:text-sm">
                      <li>
-                        <Link to="/huong-dan-dang-tin" className="hover:text-blue-600 transition-colors">
+                        <Link to="#" className="hover:text-blue-600 transition-colors">
                            Hướng dẫn đăng tin
                         </Link>
                      </li>
                      <li>
-                        <Link to="/bang-gia-dich-vu" className="hover:text-blue-600 transition-colors">
+                        <Link to="#" className="hover:text-blue-600 transition-colors">
                            Bảng giá dịch vụ
                         </Link>
                      </li>
                      <li>
-                        <Link to="/quy-dinh-dang-tin" className="hover:text-blue-600 transition-colors">
+                        <Link to="#" className="hover:text-blue-600 transition-colors">
                            Quy định đăng tin
                         </Link>
                      </li>
                      <li>
-                        <Link to="/chinh-sach-bao-mat" className="hover:text-blue-600 transition-colors">
+                        <Link to="#" className="hover:text-blue-600 transition-colors">
                            Chính sách bảo mật
                         </Link>
                      </li>

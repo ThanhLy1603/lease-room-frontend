@@ -121,6 +121,12 @@ export default function EditPostPage(): React.ReactElement {
       setCatSearchTerm('');
    }
 
+   function preventInvalidNumberKeys(e: React.KeyboardEvent<HTMLInputElement>): void {
+      if (e.key === '-' || e.key === 'e' || e.key === 'E') {
+         e.preventDefault();
+      }
+   }
+
    if (isLoading) {
       return (
          <div className="min-h-[70vh] flex items-center justify-center">
@@ -169,22 +175,20 @@ export default function EditPostPage(): React.ReactElement {
                      <button
                         type="button"
                         onClick={() => setActiveTab('edit')}
-                        className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all ${
-                           activeTab === 'edit'
+                        className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all ${activeTab === 'edit'
                               ? 'bg-white text-blue-600 shadow-sm'
                               : 'text-slate-600 hover:text-slate-900'
-                        }`}
+                           }`}
                      >
                         <Edit3 className="w-3.5 h-3.5" /> Chỉnh sửa
                      </button>
                      <button
                         type="button"
                         onClick={() => setActiveTab('preview')}
-                        className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all ${
-                           activeTab === 'preview'
+                        className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all ${activeTab === 'preview'
                               ? 'bg-white text-blue-600 shadow-sm'
                               : 'text-slate-600 hover:text-slate-900'
-                        }`}
+                           }`}
                      >
                         <Eye className="w-3.5 h-3.5" /> Xem trước
                      </button>
@@ -217,9 +221,8 @@ export default function EditPostPage(): React.ReactElement {
                                  <button
                                     type="button"
                                     onClick={() => setIsCatOpen(!isCatOpen)}
-                                    className={`w-full px-3.5 py-2.5 rounded-xl border bg-white text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20 flex items-center justify-between text-left transition-all ${
-                                       errors?.categoryId ? 'border-rose-400 bg-rose-50/30' : 'border-slate-200'
-                                    }`}
+                                    className={`w-full px-3.5 py-2.5 rounded-xl border bg-white text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20 flex items-center justify-between text-left transition-all ${errors?.categoryId ? 'border-rose-400 bg-rose-50/30' : 'border-slate-200'
+                                       }`}
                                  >
                                     <span className={selectedCategory ? 'text-slate-800 font-medium truncate pr-2' : 'text-slate-400'}>
                                        {selectedCategory ? selectedCategory.name : '-- Chọn danh mục --'}
@@ -271,11 +274,10 @@ export default function EditPostPage(): React.ReactElement {
                                                    key={c.id}
                                                    type="button"
                                                    onClick={() => handleSelectCategory(c.id)}
-                                                   className={`w-full text-left px-4 py-2.5 text-xs transition-colors flex items-center justify-between ${
-                                                      formData.categoryId === c.id
+                                                   className={`w-full text-left px-4 py-2.5 text-xs transition-colors flex items-center justify-between ${formData.categoryId === c.id
                                                          ? 'bg-blue-50 text-blue-600 font-semibold'
                                                          : 'hover:bg-slate-50 text-slate-700'
-                                                   }`}
+                                                      }`}
                                                 >
                                                    <span className="truncate">{c.name}</span>
                                                 </button>
@@ -302,9 +304,8 @@ export default function EditPostPage(): React.ReactElement {
                                     placeholder="VD: 0901234567"
                                     value={formData.contactPhone}
                                     onChange={handleInputChange}
-                                    className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20 ${
-                                       errors?.contactPhone ? 'border-rose-400 bg-rose-50/30' : 'border-slate-200'
-                                    }`}
+                                    className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20 ${errors?.contactPhone ? 'border-rose-400 bg-rose-50/30' : 'border-slate-200'
+                                       }`}
                                  />
                               </div>
                               {errors?.contactPhone && <p className="text-xs text-rose-500 mt-1 font-medium">{errors.contactPhone}</p>}
@@ -321,9 +322,8 @@ export default function EditPostPage(): React.ReactElement {
                               placeholder="VD: Cho thuê phòng trọ khép kín full nội thất"
                               value={formData.title}
                               onChange={handleInputChange}
-                              className={`w-full px-3.5 py-2.5 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20 ${
-                                 errors?.title ? 'border-rose-400 bg-rose-50/30' : 'border-slate-200'
-                              }`}
+                              className={`w-full px-3.5 py-2.5 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20 ${errors?.title ? 'border-rose-400 bg-rose-50/30' : 'border-slate-200'
+                                 }`}
                            />
                            {errors?.title && <p className="text-xs text-rose-500 mt-1 font-medium">{errors.title}</p>}
                         </div>
@@ -340,9 +340,8 @@ export default function EditPostPage(): React.ReactElement {
                                  placeholder="VD: Số 123 Đường Lý Thường Kiệt, Phường 14"
                                  value={formData.streetAddress}
                                  onChange={handleInputChange}
-                                 className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20 ${
-                                    errors?.streetAddress ? 'border-rose-400 bg-rose-50/30' : 'border-slate-200'
-                                 }`}
+                                 className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20 ${errors?.streetAddress ? 'border-rose-400 bg-rose-50/30' : 'border-slate-200'
+                                    }`}
                               />
                            </div>
                            {errors?.streetAddress && <p className="text-xs text-rose-500 mt-1 font-medium">{errors.streetAddress}</p>}
@@ -363,12 +362,13 @@ export default function EditPostPage(): React.ReactElement {
                               <input
                                  type="number"
                                  name="price"
+                                 min="0"
                                  placeholder="VD: 3500000"
+                                 onKeyDown={preventInvalidNumberKeys}
                                  value={formData.price}
                                  onChange={handleInputChange}
-                                 className={`w-full px-3.5 py-2.5 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20 ${
-                                    errors?.price ? 'border-rose-400 bg-rose-50/30' : 'border-slate-200'
-                                 }`}
+                                 className={`w-full px-3.5 py-2.5 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20 ${errors?.price ? 'border-rose-400 bg-rose-50/30' : 'border-slate-200'
+                                    }`}
                               />
                               {errors?.price && <p className="text-xs text-rose-500 mt-1 font-medium">{errors.price}</p>}
                            </div>
@@ -381,11 +381,12 @@ export default function EditPostPage(): React.ReactElement {
                                  type="number"
                                  name="area"
                                  placeholder="VD: 25"
+                                 min="0"
+                                 onKeyDown={preventInvalidNumberKeys}
                                  value={formData.area}
                                  onChange={handleInputChange}
-                                 className={`w-full px-3.5 py-2.5 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20 ${
-                                    errors?.area ? 'border-rose-400 bg-rose-50/30' : 'border-slate-200'
-                                 }`}
+                                 className={`w-full px-3.5 py-2.5 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20 ${errors?.area ? 'border-rose-400 bg-rose-50/30' : 'border-slate-200'
+                                    }`}
                               />
                               {errors?.area && <p className="text-xs text-rose-500 mt-1 font-medium">{errors.area}</p>}
                            </div>
@@ -396,6 +397,8 @@ export default function EditPostPage(): React.ReactElement {
                                  type="number"
                                  name="deposit"
                                  placeholder="VD: 3500000"
+                                 min="0"
+                                 onKeyDown={preventInvalidNumberKeys}
                                  value={formData.deposit}
                                  onChange={handleInputChange}
                                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20"

@@ -43,11 +43,17 @@ export default function UniversitiesSection({
       document.addEventListener('mousedown', handleClickOutside);
       return () => document.removeEventListener('mousedown', handleClickOutside);
    }, []);
-   
+
    function handleSelect(id: string) {
       setSelectedUniId(id);
       setIsOpen(false);
       setSearchTerm('');
+   }
+
+   function preventInvalidNumberKeys(e: React.KeyboardEvent<HTMLInputElement>): void {
+      if (e.key === '-' || e.key === 'e' || e.key === 'E') {
+         e.preventDefault();
+      }
    }
 
    function handleClearSelect(e: React.MouseEvent) {
@@ -123,9 +129,8 @@ export default function UniversitiesSection({
                                     key={item.id}
                                     type="button"
                                     onClick={() => handleSelect(item.id)}
-                                    className={`w-full text-left px-4 py-2.5 text-sm transition-colors flex items-center justify-between ${
-                                       selectedUniId === item.id ? 'bg-indigo-50 text-indigo-600 font-semibold' : 'hover:bg-slate-50 text-slate-700'
-                                    }`}
+                                    className={`w-full text-left px-4 py-2.5 text-sm transition-colors flex items-center justify-between ${selectedUniId === item.id ? 'bg-indigo-50 text-indigo-600 font-semibold' : 'hover:bg-slate-50 text-slate-700'
+                                       }`}
                                  >
                                     <span className="truncate pr-2">{item.name}</span>
                                     {isAdded && (
@@ -152,6 +157,7 @@ export default function UniversitiesSection({
                      placeholder="Khoảng cách (km)"
                      step={0.1}
                      min={0}
+                     onKeyDown={preventInvalidNumberKeys}
                      value={uniDistance}
                      onChange={(e) => setUniDistance(e.target.value ? Number(e.target.value) : '')}
                      className="w-full px-4 py-2.5 pr-8 rounded-xl border border-slate-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
