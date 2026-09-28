@@ -28,8 +28,8 @@ export interface UpdateUniversityPayload {
 
 const headers = getAuthHeaders();
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api';
-export const UNIVERSITY_API_URL = `${BASE_URL}/universities`;
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080';
+export const UNIVERSITY_API_URL = `${BASE_URL}/api/universities`;
 
 export const universityApi = {
 

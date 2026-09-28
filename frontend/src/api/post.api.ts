@@ -6,8 +6,8 @@ import type { PostResponse } from "../types/post/post-response";
 import type { UpdatePost } from "../types/post/update-post";
 import type { PostFilterParams } from "../types/post/post-filter-params.dto";
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api';
-export const POST_API_URL = `${BASE_URL}/posts`;
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080';
+export const POST_API_URL = `${BASE_URL}/api/posts`;
 
 // Helper chuyển Payload thành FormData
 const buildFormData = (data: Record<string, any>, files?: File[]): FormData => {

@@ -14,8 +14,8 @@ export interface UpdateCategoryInput {
 
 const headers = getAuthHeaders();
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api';
-export const CATEGORY_API_URL = `${BASE_URL}/categories`;
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080';
+export const CATEGORY_API_URL = `${BASE_URL}/api/categories`;
 
 export const categoryApi = {
    async getAll(): Promise<Category[]> {
