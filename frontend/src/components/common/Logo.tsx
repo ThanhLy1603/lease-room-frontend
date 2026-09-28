@@ -1,9 +1,17 @@
 import type React from "react";
-import { Link } from "react-router-dom";
 
 export function Logo(): React.ReactElement {
+   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault();
+      window.location.href = window.location.origin + "/";
+   };
+
    return (
-      <Link to="/" className="flex items-center gap-3 shrink-0">
+      <a 
+         href="/" 
+         onClick={handleLogoClick}
+         className="flex items-center gap-3 shrink-0 select-none cursor-pointer"
+      >
          <div className="relative flex items-center justify-center w-12 h-12 bg-white rounded-xl shadow-md border border-slate-100 p-1">
             <svg viewBox="0 0 100 100" className="w-full h-full text-sky-500" fill="currentColor">
                <path d="M50 15 L12 50 L22 50 L22 82 C22 85 24 87 27 87 L73 87 C76 87 78 85 78 82 L78 50 L88 50 Z" />
@@ -24,6 +32,6 @@ export function Logo(): React.ReactElement {
                SGHOUSES<span className="text-slate-900">.vn</span>
             </span>
          </div>
-      </Link>
+      </a>
    );
 }
